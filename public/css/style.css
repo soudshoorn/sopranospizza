@@ -1,0 +1,113 @@
+/*COLORS
+
+DARK GREEN: #395144
+GREEN: #4E6C50
+BROWN: #AA8B56
+BEIGE: #F0EBCE
+
+*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style-type: none;
+}
+
+.row {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 0 12px;
+}
+
+/*
+
+    NAV
+
+*/
+
+nav {
+    padding: 0 12px;
+    margin: 24px 0;
+}
+
+.nav__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__list {
+    display: flex;
+    gap: 12px;
+}
+
+.nav__logo--title {
+    font-size: 32px;
+    color: #395144;
+}
+
+.nav__list--link {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/*
+
+    LANDING
+
+*/
+
+.landing {
+    width: 100%;
+    height: 80vh;
+    padding: 0 12px;
+}
+
+.landing__wrapper {
+    height: 75vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.landing__description {
+    width: 100%;
+}
+
+.landing__description--title {
+    font-size: 40px;
+    color: #395144;
+    max-width: 400px;
+}
+
+.landing__description--para {
+    font-size: 20px;
+    color: #242424;
+    max-width: 400px;
+}
+
+.landing__banner {
+    height: 100%;
+    width: 100%;
+    background-color: #AA8B56;
+    border-radius: 8px;
+}
+
+/*
+
+    STEPS
+
+*/
+
+.steps__step--icon {
+    width: 50px;
+    height: 50px;
+    background-color: #395144;
+}
