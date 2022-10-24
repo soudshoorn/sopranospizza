@@ -7,12 +7,13 @@ BEIGE: #F0EBCE
 
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700;800&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     list-style-type: none;
 }
 
@@ -23,7 +24,11 @@ BEIGE: #F0EBCE
 }
 
 section {
-    padding: 0 12px;
+    padding: 24px 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 /*
@@ -45,10 +50,11 @@ nav {
 
 .nav__list {
     display: flex;
-    gap: 12px;
+    gap: 32px;
 }
 
 .nav__logo--title {
+    font-weight: 800;
     font-size: 32px;
     color: #395144;
 }
@@ -56,6 +62,10 @@ nav {
 .nav__list--link {
     font-size: 18px;
     cursor: pointer;
+}
+
+.nav__list--hyper {
+    color: #395144;
 }
 
 /*
@@ -88,7 +98,8 @@ nav {
 }
 
 .landing__description--para {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 300;
     color: #242424;
     max-width: 400px;
 }
@@ -96,8 +107,14 @@ nav {
 .landing__banner {
     height: 100%;
     width: 100%;
-    background-color: #AA8B56;
+}
+
+.landing__banner--img {
+    width: 100%; /* or any custom size */
+    height: 100%;
+    object-fit: cover;
     border-radius: 8px;
+
 }
 
 /*
@@ -106,8 +123,76 @@ nav {
 
 */
 
+.steps__wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.steps__step {
+    width: calc(100% / 3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
 .steps__step--icon {
-    width: 50px;
-    height: 50px;
+    padding: 16px;
+    width: 100px;
+    height: 100px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #395144;
+    border-radius: 50%;
+    color: #F0EBCE;
+}
+
+.steps__step--title {
+    color: #AA8B56;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.steps__step--para {
+    font-size: 16px;
+    font-weight: 300;
+    color: #242424;
+    text-align: center;
+}
+
+/*
+
+    DASHBOARD
+
+*/
+
+.dashboard__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+
+.dashboard__statics {
+    width: calc(100% / 2);
+}
+
+.dashboard__static {
+    background-color: #395144;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.dashboard__statics--title {
+    color: #fff;
+}
+
+.dashboard__statics--para {
+    font-size: 32px;
+    font-weight: 300;
+    color: #F0EBCE;
 }
