@@ -25,14 +25,42 @@
                         </div>
                         <ul class="nav__list">
                             <li class="nav__list--link"><a class="nav__list--hyper" href="/">Home</a></li>
-                            <li class="nav__list--link"><a class="nav__list--hyper" href="/pizzas">Pizza's</a></li>
+                            <li class="nav__list--link"><a class="nav__list--hyper" href="/categories">Pizza's</a></li>
                             <li class="nav__list--link"><a class="nav__list--hyper" href="/contact">Contact</a></li>
-                            <li class="nav__list--link"><a class="nav__list--hyper" href="/dashboard"><i class="fas fa-user"></i></a></li>
+                            <li class="nav__list--link user__dropdown">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <a class="nav__list--hyper" href="{{ path('admin_dashboard') }}">
+                                {% else %}
+                                <a class="nav__list--hyper" href="{{ path('app_dashboard') }}">
+                                {% endif %}
+                                    <i class="fas fa-user"></i>
+                                </a>
+                                <ul class="user__list">
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li class="user__list--link"><a class="user__list--hyper" href="{{ path('admin_dashboard') }}">Dashboard</a></li>
+                                    {% else %}
+                                        <li class="user__list--link"><a class="user__list--hyper" href="{{ path('app_dashboard') }}">Dashboard</a></li>
+                                    {% endif %}
+                                    {% if app.user %}
+                                        <li class="user__list--link"><a class="user__list--hyper" href="{{ path('app_logout') }}">Logout</a></li>
+                                    {% else %}
+                                        <li class="user__list--link"><a class="user__list--hyper" href="{{ path('app_login') }}">Login</a></li>
+                                        <li class="user__list--link"><a class="user__list--hyper" href="{{ path('app_register') }}">Registreer</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
         {% block body %}{% endblock %}
+        <footer>
+            <div class="container">
+                <div class="row">
+
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

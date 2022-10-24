@@ -17,7 +17,7 @@ class Orders
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?int $price = null;
+    private ?float $price = null;
 
     #[ORM\Column]
     private ?int $user_id = null;

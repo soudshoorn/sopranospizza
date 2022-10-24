@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="categories__wrapper">
+                    <div class="categories__banner page__banner">
+                        <img class="categories__banner--img page__banner--img"
+                             src="{{ asset('img/categories-banner.jpg') }}"/>
+                    </div>
+                    <h3 class="categories__title section__title">Categorieen</h3>
+                    <div class="categories__category">
+                        {% for category in categories %}
+                            <a class="category" href="/category/{{ category.id }}">
+                                <img class="category__img" src="{{ asset('img/'~category.img~'') }}"
+                                     alt="{{ category.img }}"/>
+                                <div class="category__description">
+                                    <div class="category__description--title">{{ category.name }} Pizza's</div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

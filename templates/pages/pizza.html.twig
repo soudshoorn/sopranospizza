@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="pizza">
+        <div class="container">
+            <div class="row">
+                <div class="pizza__wrapper">
+                    <div class="pizza__content">
+                        <div class="pizza__banner">
+                            <img class="pizza__banner--img" src="{{ asset('img/'~pizza.img~'') }}">
+                        </div>
+                        <div class="pizza__description">
+                            <h3 class="pizza__description--title section__title">{{ pizza.name }} Pizza</h3>
+                            <p class="pizza__description--para">{{ pizza.description }}</p>
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <button class="btn btn-outline-success m-3">{{ button_label|default('Save') }}</button>
+                            <br>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                    <div class="pizza__banner page__banner">
+                        <img class="categories__banner--img page__banner--img" src="{{ asset('img/categories-banner.jpg') }}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

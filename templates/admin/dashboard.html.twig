@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="dashboard">
+        <div class="container">
+            <div class="row">
+                <div class="dashboard__statics--wrapper">
+                    <div class="dashboard__statics">
+                        <div class="dashboard__statics--count dashboard__static">
+                            <h3 class="dashboard__statics--title">AANTAL BESTELLINGEN</h3>
+                            <p class="dashboard__statics--para">{{ orders | length }}</p>
+                        </div>
+                    </div>
+                    <div class="dashboard__statics">
+                        <div class="dashboard__statics--count dashboard__static">
+                            <h3 class="dashboard__statics--title">OMZET</h3>
+                            <p class="dashboard__statics--para">
+                                {% set totalRevenue = 0 %}
+                                {% for order in orders %}
+                                    {% set totalRevenue = totalRevenue + order.orders.price %}
+                                {% endfor %}
+                                €{{ totalRevenue }},-
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard__orders--wrapper">
+                    <h3 class="dashboard__orders--title">Alle Bestellingen</h3>
+                    <ul class="dashboard__table">
+                        <li class="dashboard__table--list dashboard__table--header">
+                            <div class="dashboard__table--cell">Order Id</div>
+                            <div class="dashboard__table--cell">Customer</div>
+                            <div class="dashboard__table--cell">Order</div>
+                            <div class="dashboard__table--cell">Price</div>
+                        </li>
+                        {% for order in orders %}
+                            <li class="dashboard__table--row dashboard__table--list">
+                                <div class="dashboard__table--cell" data-label="Order Id">{{ order.orders.id }}</div>
+                                <div class="dashboard__table--cell" data-label="Customer">{{ order.orders.userid }}</div>
+                                <div class="dashboard__table--cell" data-label="Order">{{ order.orders.description }}</div>
+                                <div class="dashboard__table--cell" data-label="Price">€{{ order.orders.price }},-</div>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
