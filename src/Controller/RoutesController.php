@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bundle\DebugBundle;
 
 class RoutesController extends AbstractController
 {
