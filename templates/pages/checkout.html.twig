@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="checkout">
+        <div class="container">
+            <div class="row">
+                <div class="checkout__wrapper">
+                    <div class="checkout checkout__half">
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+
+                    </div>
+                    <div class="order checkout__half">
+                        <ul class="order__list">
+                            <li class="order__list--item">
+                                <p class="order__list--para">Naam:</p>
+                                {{ order[0].name }} Pizza
+                            </li>
+                            <li class="order__list--item">
+                                <p class="order__list--para">Extra's:</p>
+                                {{ order[0].size }} - {{ order[0].topping }}
+                            </li>
+                            <li class="order__list--item">
+                                <p class="order__list--para">Prijs:</p>
+                                €{{ order[0].price }},-
+                            </li>
+                                <button class="order__list--item order__last">{{ button_label|default('Bestellen') }}</button>
+                                <br>
+                                {{ form_end(form) }}
+                        </ul>
+                    </div>
+                    <div class="checkout__banner">
+                        <img class="checkout__banner--img" src="{{ asset('img/landing.jpg') }}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        if("{{ email }}") {
+            const checkoutEmail = document.querySelector('.checkout__email');
+
+            checkoutEmail.value = "{{ email }}";
+            checkoutEmail.textContent = "{{ email }}";
+
+            console.log(checkoutEmail)
+        }
+    </script>
+{% endblock %}

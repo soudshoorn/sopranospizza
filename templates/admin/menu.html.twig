@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="dashboard">
+        <div class="container">
+            <div class="row">
+                <div class="dashboard__orders--wrapper">
+                    <div class="dashboard__titles">
+                        <h3 class="dashboard__orders--title">Menu</h3>
+                        <a href="{{ path('admin_menunew') }}" class="dashboard__orders--title">Nieuwe Pizza</a>
+                    </div>
+                    <ul class="dashboard__table">
+                        <li class="dashboard__table--list dashboard__table--header">
+                            <div class="dashboard__table--cell">Id</div>
+                            <div class="dashboard__table--cell">Naam</div>
+                            <div class="dashboard__table--cell">Beschrijving</div>
+                            <div class="dashboard__table--cell">Prijs</div>
+                            <div class="dashboard__table--cell">Categorie</div>
+                            <div class="dashboard__table--cell">Foto</div>
+                            <div class="dashboard__table--cell">Bewerken</div>
+                        </li>
+                        {% for pizza in pizzas %}
+                            <li class="dashboard__table--row dashboard__table--list">
+                                <div class="dashboard__table--cell" data-label="Id">{{ pizza.pizzas.id }}</div>
+                                <div class="dashboard__table--cell"
+                                     data-label="Name">{{ pizza.pizzas.name }}</div>
+                                <div class="dashboard__table--cell"
+                                     data-label="Description">{{ pizza.pizzas.description }}</div>
+                                <div class="dashboard__table--cell" data-label="Price">€{{ pizza.pizzas.price }},-</div>
+                                <div class="dashboard__table--cell"
+                                     data-label="Description">{{ pizza.category }}</div>
+                                <div class="dashboard__table--cell user__dropdown" data-label="Image">
+                                    Foto <i class="fas fa-caret-down"></i>
+                                    <ul class="user__list user__list--banner">
+                                        <li class="user__list--link"><img class="user__list--img" src="{{ asset('img/'~pizza.pizzas.img~'') }}" /></li>
+                                    </ul>
+                                </div>
+                                <div class="dashboard__table--cell user__dropdown" data-label="Image">
+                                    Opties <i class="fas fa-caret-down"></i>
+                                    <ul class="user__list user__list--banner">
+                                        <li class="user__list--link"><a class="user__list--hyper"
+                                                                        href="/admin/menu/edit/{{ pizza.pizzas.id }}">Bewerken <i class="fas fa-pencil-alt"></i></a></li>
+                                        <li class="user__list--link"><a class="user__list--hyper"
+                                                                        href="/admin/menu/delete/{{ pizza.pizzas.id }}">Verwijderen <i class="fas fa-times"></i></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

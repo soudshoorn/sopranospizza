@@ -24,7 +24,7 @@ BEIGE: #F0EBCE
 }
 
 section {
-    padding: 24px 0;
+    padding: 24px 8px;
 }
 
 a {
@@ -44,11 +44,53 @@ a {
 }
 
 .page__banner--img {
-    width: 100%; /* or any custom size */
+    width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
 }
+
+.btn {
+    padding: 8px 12px;
+    background: #395144;
+    color: #F0EBCE;
+    border-radius: 4px;
+    font-size: 20px;
+    border: none;
+    margin: 4px 0;
+    cursor: pointer;
+    margin: 16px 0;
+}
+
+.form__select {
+    padding: 4px;
+    border-radius: 8px;
+    margin: 4px 0;
+}
+
+.alert {
+    width: 100%;
+    color: #155724;
+    background-color: #d4edda;
+    border: solid 2px #c3e6cb;
+    font-weight: 300;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 12px 0;
+}
+
+.alert__success {
+    color: #155724;
+    background-color: #d4edda;
+    border: solid 2px #c3e6cb;
+}
+
+.alert__error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
 
 /*
 
@@ -64,6 +106,13 @@ a {
     border-radius: 0 8px 8px 8px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+}
+
+.user__list--img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
 .user__list--link {
@@ -220,17 +269,45 @@ nav {
 
 */
 
-.dashboard__table--list {
-    border-radius: 3px;
-    padding: 25px 20px;
+.dashboard__titles {
     display: flex;
     justify-content: space-between;
+}
+
+.status {
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #242424;
+    padding: 4px;
+}
+
+.status__todo {
+    background-color: #ff6668;
+}
+
+.status__inprogress {
+    background-color: #ffa540;
+}
+
+.status__done {
+    background-color: #7dff74;
+}
+
+.dashboard__table--list {
+    border-radius: 3px;
+    padding: 25px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 25px;
     width: 100%;
 }
 
 .dashboard__table--cell {
     flex-basis: 15%;
+    text-align: center;
 }
 
 .dashboard__table--header {
@@ -240,6 +317,8 @@ nav {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
+    width: 100%;
+
 }
 
 .dashboard__table--row {
@@ -294,7 +373,6 @@ nav {
 
 .categories__category {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -303,8 +381,9 @@ nav {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 25%;
-    max-height: 250px;
+    padding: 0 12px;
+    max-width: calc(100% / 3);
+    height: 100%;
 }
 
 .category__description {
@@ -315,13 +394,18 @@ nav {
     align-items: center;
 }
 
+.category__description--price {
+    color: #395144;
+    border-bottom: 2px solid #395144;
+}
+
 .category__description--title {
     color: #395144;
 }
 
 .category__img {
     width: 100%;
-    height: 100%;
+    height: 250px;
     object-fit: cover;
     border-radius: 12px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
@@ -343,6 +427,18 @@ nav {
     gap: 12px;
 }
 
+.pizza__description {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pizza__description--price {
+    color: #395144;
+    font-size: 30px;
+}
+
 .pizza__description--title {
     font-size: 40px;
 }
@@ -351,9 +447,134 @@ nav {
     font-size: 18px;
 }
 
+.pizza__banner {
+    width: 100%;
+    max-width: 700px;
+}
+
 .pizza__banner--img {
     width: 100%;
     height: 600px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+div:has(> .form__select) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form__choice {
+    display: flex;
+    gap: 8px;
+}
+
+.pizza__banner--container {
+    position: relative;
+    text-align: center;
+    background: #242424;
+    border-radius: 12px;
+}
+
+.pizza__bottom--banner {
+    opacity: .5;
+}
+
+.pizza__banner--title {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 32px;
+}
+
+.pizza__banner--btn {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*
+
+    CHECKOUT
+
+*/
+
+.checkout__wrapper {
+    display: flex;
+    flex: 50%;
+}
+
+.checkout__half {
+    width: 25%;
+    margin: 0 12px;
+}
+
+.order__list--para {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 2px 0;
+}
+
+.order__last {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #395144 !important;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 8px 8px ;
+    color: #F0EBCE;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.order__list--item {
+    background: #F5F5F5;
+    padding: 12px 8px;
+    border-bottom: 2px solid #395144;
+}
+
+.checkout__banner {
+    width: 100%;
+    max-width: 50%;
+    max-height: 500px;
+}
+
+.checkout__banner--img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/*
+
+    NEW PIZZA
+
+*/
+
+.newpizza__wrapper {
+    display: flex;
+}
+
+.newpizza__form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 24px;
+}
+
+.newpizza__banner {
+    max-width: 80%;
+}
+
+.newpizza__banner--img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 12px;
 }

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="newpizza">
+        <div class="container">
+            <div class="row">
+                <div class="newpizza__wrapper">
+                    <div class="newpizza__form">
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <button class="pizza__btn btn">{{ button_label|default('Bevestigen') }}</button>
+                        <br>
+                        {{ form_end(form) }}
+                    </div>
+                    <div class="newpizza__banner">
+                        <img src="{{ asset('img/categories-banner.jpg') }}" class="newpizza__banner--img" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

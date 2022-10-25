@@ -25,23 +25,46 @@
                     </div>
                 </div>
                 <div class="dashboard__orders--wrapper">
-                    <h3 class="dashboard__orders--title">Alle Bestellingen</h3>
+                    <div class="dashboard__titles">
+                        <h3 class="dashboard__orders--title">Alle Bestellingen</h3>
+                        <a href="{{ path('admin_menu') }}" class="dashboard__orders--title">Beheer Menu</a>
+                    </div>
                     <ul class="dashboard__table">
                         <li class="dashboard__table--list dashboard__table--header">
                             <div class="dashboard__table--cell">Order Id</div>
-                            <div class="dashboard__table--cell">Customer</div>
+                            <div class="dashboard__table--cell">Gebruikers Info</div>
                             <div class="dashboard__table--cell">Order</div>
                             <div class="dashboard__table--cell">Price</div>
+                            <div class="dashboard__table--cell">Status</div>
                         </li>
                         {% for order in orders %}
                             <li class="dashboard__table--row dashboard__table--list">
                                 <div class="dashboard__table--cell" data-label="Order Id">{{ order.orders.id }}</div>
-                                <div class="dashboard__table--cell" data-label="Customer">{{ order.orders.userid }}</div>
-                                <div class="dashboard__table--cell" data-label="Order">{{ order.orders.description }}</div>
+                                <div class="dashboard__table--cell user__dropdown" data-label="Customer">
+                                    {{ order.email }} <i class="fas fa-caret-down"></i>
+                                    <ul class="user__list">
+                                        <li class="user__list--link"><strong>Naam: </strong>{{ order.orders.name }}</li>
+                                        <li class="user__list--link"><strong>Email: </strong>{{ order.orders.email }}
+                                        </li>
+                                        <li class="user__list--link"><strong>Adress: </strong>{{ order.orders.adress }}
+                                        </li>
+                                        <li class="user__list--link">
+                                            <strong>Postcode: </strong>{{ order.orders.postal }}</li>
+                                        <li class="user__list--link"><strong>Betaal
+                                                Methode: </strong>{{ order.orders.paymethod }}</li>
+                                    </ul>
+                                </div>
+                                <div class="dashboard__table--cell"
+                                     data-label="Order">{{ order.orders.description }}</div>
                                 <div class="dashboard__table--cell" data-label="Price">€{{ order.orders.price }},-</div>
+                                <a href="/admin/statuschange/{{ order.orders.id }}"
+                                   class="dashboard__table--cell dashboard__status status status__{{ order.orders.status|replace({' ': ''})|lower }}"
+                                   data-label="Price" data-status="{{ order.orders.id }}">
+                                    {{ order.orders.status }}
+                                </a>
+
                             </li>
                         {% endfor %}
-
                     </ul>
                 </div>
             </div>

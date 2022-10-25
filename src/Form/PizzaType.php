@@ -14,16 +14,22 @@ class PizzaType extends AbstractType
         $builder
             ->add('size', ChoiceType::class, [
                 'choices'  => [
-                    '15cm (Small)' => 15,
-                    '30cm (Medium)' => 30,
-                    '40cm (Large)' => 40,
+                    '25cm (Medium)' => '25cm (Medium)',
+                    '35cm (Large)' => '35cm (Large)',
+                    'Calzone' => 'Calzone',
+                ],
+                'attr' => [
+                    'class' => 'form__size form__select'
                 ],
             ])
             ->add('topping', ChoiceType::class, [
                 'choices'  => [
-                    'Knoflook Saus' => 'knoflook',
-                    'Sambal' => 'sambal',
-                    'Chilli Saus' => 'chilli',
+                    'Knoflook Saus' => 'Knoflook Saus',
+                    'Sambal' => 'Sambal',
+                    'Chilli Flakes' => 'Chilli Flakes',
+                ],
+                'attr' => [
+                    'class' => 'form__topping form__select'
                 ],
             ])
         ;

@@ -11,16 +11,19 @@
                         </div>
                         <div class="pizza__description">
                             <h3 class="pizza__description--title section__title">{{ pizza.name }} Pizza</h3>
+                            <h5 class="pizza__description--price">€{{ pizza.price }},-</h5>
                             <p class="pizza__description--para">{{ pizza.description }}</p>
                             {{ form_start(form) }}
                             {{ form_widget(form) }}
-                            <button class="btn btn-outline-success m-3">{{ button_label|default('Save') }}</button>
+                            <button class="pizza__btn btn">{{ button_label|default('Bestellen') }}</button>
                             <br>
                             {{ form_end(form) }}
                         </div>
                     </div>
-                    <div class="pizza__banner page__banner">
-                        <img class="categories__banner--img page__banner--img" src="{{ asset('img/categories-banner.jpg') }}" />
+                    <div class="pizza__banner--container page__banner">
+                        <img class="categories__banner--img page__banner--img pizza__bottom--banner" src="{{ asset('img/categories-banner.jpg') }}" />
+                        <h3 class="pizza__banner--title pizza__banner--item">Andere pizza's bekijken?</h3>
+                        <a class="btn pizza__banner--btn pizza__banner--item" src="{{ path('app_categories') }}">Bekijk andere pizza's</a>
                     </div>
                 </div>
             </div>
