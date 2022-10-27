@@ -4,14 +4,26 @@
     {% if error != null %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
+    <section class="auth">
+        <div class="container">
+            <div class="row">
+                <div class="auth__wrapper">
+                        <form class="auth__form auth__child" action="{{ path('app_login') }}" method="post">
+                            <label for="username">Email:</label>
+                            <input type="text" id="username" name="_username" class="auth__form--input" value="{{ last_username ?? '' }}"/>
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username ?? '' }}"/>
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" class="auth__form--input" name="_password"/>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password"/>
+                            <button type="submit" class="btn">Login</button>
+                            <div class="auth__register">Nog geen account? Klik dan <a class="auth__register--link" href="{{ path('app_register') }}">hier!</a></div>
+                        </form>
+                    <div class="auth__banner auth__child">
+                        <img src="{{ asset('img/landing.jpg') }}" class="auth__banner--img" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <button type="submit">login</button>
-    </form>
 {% endblock %}

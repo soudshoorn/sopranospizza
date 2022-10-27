@@ -93,6 +93,7 @@ class RoutesController extends AbstractController
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
 
+
         $orderArray[] = ['name' => $session->get('name'), 'price' => $session->get('price'), 'size' => $session->get('size'), 'topping' => $session->get('topping')];
 
         if ($form->isSubmitted() && $form->isValid()) {

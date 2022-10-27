@@ -3,21 +3,28 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <section class="register">
+    <section class="auth">
         <div class="container">
             <div class="row">
-            <h1>Register</h1>
+                <div class="auth__wrapper">
+                    <div class="auth__form auth__register--form">
+                        {{ form_start(registrationForm) }}
+                        {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.plainPassword, {
+                            label: 'Password'
+                        }) }}
+                        {{ form_row(registrationForm.agreeTerms) }}
 
-            {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.agreeTerms) }}
-
-            <button type="submit" class="btn">Register</button>
-            {{ form_end(registrationForm) }}
+                        <button type="submit" class="btn auth__register--input">Register</button>
+                        {{ form_end(registrationForm) }}
+                        <div class="auth__register">Heb je al een account? Klik dan <a class="auth__register--link" href="{{ path('app_login') }}">hier!</a></div>
+                    </div>
+                <div class="auth__banner auth__child">
+                    <img src="{{ asset('img/landing.jpg') }}" class="auth__banner--img"/>
+                </div>
+                </div>
             </div>
+        </div>
         </div>
     </section>
 {% endblock %}
