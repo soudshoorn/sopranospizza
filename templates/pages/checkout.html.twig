@@ -12,17 +12,23 @@
                     </div>
                     <div class="order checkout__half">
                         <ul class="order__list">
+                            {% set totalPrice = 0 %}
+                            {% for subarray in order[0] %}
+                                <li class="order__list--item">
+                                    <a href="/checkoutdelete/{{ loop.index0 }}" class="order__list--small"><i class="fas fa-trash"></i></a>
+                                {% for pizza in subarray %}
+                                    <p class="order__list--para">Naam:</p>
+                                    {{ pizza.name }} Pizza
+                                    <p class="order__list--para">Extra's:</p>
+                                    {{ pizza.size }} - {{ pizza.topping }}
+                                    <p class="order__list--para">Prijs:</p>
+                                    €{{ pizza.price }},
+                                    {% set totalPrice = totalPrice + pizza.price %}
+                                {% endfor %}
+                                </li>
+                            {% endfor %}
                             <li class="order__list--item">
-                                <p class="order__list--para">Naam:</p>
-                                {{ order[0].name }} Pizza
-                            </li>
-                            <li class="order__list--item">
-                                <p class="order__list--para">Extra's:</p>
-                                {{ order[0].size }} - {{ order[0].topping }}
-                            </li>
-                            <li class="order__list--item">
-                                <p class="order__list--para">Prijs:</p>
-                                €{{ order[0].price }},-
+                                Totaal: €{{ totalPrice }},-
                             </li>
                                 <button class="order__list--item order__last">{{ button_label|default('Bestellen') }}</button>
                                 <br>

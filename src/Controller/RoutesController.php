@@ -8,6 +8,7 @@ use App\Form\PizzaType;
 use App\Repository\CategoriesRepository;
 use App\Repository\OrdersRepository;
 use App\Repository\PizzaRepository;
+use Doctrine\ORM\Mapping\Id;
 use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -62,10 +63,13 @@ class RoutesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $session = $this->requestStack->getSession();
-            $session->set('name', $pizza->getName());
-            $session->set('price', $pizza->getPrice());
-            $session->set('size', $form->getData()["size"]);
-            $session->set('topping', $form->getData()["topping"]);
+            $cart = $request->request->all();
+            $cart['pizza']['name'] = $pizza->getName();
+            $cart['pizza']['price'] = $pizza->getPrice();
+            $cart['pizza']['id'] = $pizza->getId();
+            $sessionCart = $session->get('cart');
+            $sessionCart[] = $cart;
+            $session->set('cart', $sessionCart);
 
             return $this->redirectToRoute('app_checkout');
         }
@@ -93,23 +97,31 @@ class RoutesController extends AbstractController
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
 
-
-        $orderArray[] = ['name' => $session->get('name'), 'price' => $session->get('price'), 'size' => $session->get('size'), 'topping' => $session->get('topping')];
-
+        $orderArray[] = $session->get('cart');
         if ($form->isSubmitted() && $form->isValid()) {
+            $description = "";
+            $price = 0;
             $entityManager = $doctrine->getManager();
-            $order->setDescription($session->get('name') . ", " . $session->get('size') . ", " . $session->get('topping'));
-            $order->setPrice($session->get('price'));
+            $cart = $session->get('cart');
+            foreach($cart as $cartitem) {
+                $description = $description . $cartitem['pizza']['name'] . ", " . $cartitem['pizza']['size'] . ", " . $cartitem['pizza']['topping'] . " & ";
+                $price = $price + $cartitem['pizza']['price'];
+            }
+
+            $order->setDescription($description);
+            $order->setPrice($price);
             $order->setStatus("To Do");
-            $order->setUserId($userid);
+            if($user) {
+                $order->setUserId($userid);
+            }
             $entityManager->persist($order);
             $entityManager->flush();
-
 
             $this->addFlash(
                 'success',
                 'Je bestelling is succesvol geplaatst. Bedankt!'
             );
+            $session->remove('cart');
             return $this->redirectToRoute('index');
         }
 
@@ -119,6 +131,18 @@ class RoutesController extends AbstractController
             'form' => $form->createView(),
             'controller_name' => 'RoutesController',
         ]);
+    }
+
+    #[Route('/checkoutdelete/{id}', name: 'app_checkoutdelete')]
+    public function CheckoutDelete(int $id): Response
+    {
+        $session = $this->requestStack->getSession();
+        $cart = $session->get('cart');
+        unset($cart[$id]);
+        $session->set('cart', $cart);
+
+
+        return $this->redirectToRoute('app_checkout');
     }
 
     #[Route('/contact', name: 'app_contact')]

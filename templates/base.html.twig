@@ -33,6 +33,7 @@
                     <li class="nav__list--link"><a class="nav__list--hyper"
                                                    href="{{ path('app_categories') }}">Pizza's</a></li>
                     <li class="nav__list--link"><a class="nav__list--hyper" href="{{ path('app_contact') }}">Contact</a>
+                    <li class="nav__list--link"><a class="nav__list--hyper" href="{{ path('app_checkout') }}"><i class="fas fa-shopping-cart"></i></a>
                     </li>
                     <li class="nav__list--link user__dropdown">
                         {% if is_granted('ROLE_ADMIN') %}

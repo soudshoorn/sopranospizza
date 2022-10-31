@@ -519,6 +519,12 @@ div:has(> .form__select) {
     margin: 2px 0;
 }
 
+.order__list--small {
+    color: #395144;
+    float: right;
+    font-weight: 300;
+}
+
 .order__last {
     display: flex;
     align-items: center;
