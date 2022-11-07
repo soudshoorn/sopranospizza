@@ -24,13 +24,20 @@ class AdminController extends AbstractController
         $orders = $ordersRepository->findAll();
         $ordersArray = [];
         foreach ($orders as $order) {
+            unset($descriptionText);
             $user = $userRepository->findOneBy(['id' => $order->getUserId()]);
             if ($user !== null) {
                 $useremail = $user->getEmail();
             } else {
                 $useremail = "Gast";
             }
-            $ordersArray[] = ['orders' => $order, 'email' => $useremail];
+
+            $descriptionsArray = explode("!", $order->getDescription());
+            foreach ($descriptionsArray as $description) {
+                $descriptionText[] = explode(".", $description);
+            }
+
+            $ordersArray[] = ['orders' => $order, 'email' => $useremail, 'descriptions' => $descriptionText];
         }
 
         return $this->render('admin/dashboard.html.twig', [

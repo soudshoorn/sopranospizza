@@ -104,9 +104,14 @@ class RoutesController extends AbstractController
             $price = 0;
             $entityManager = $doctrine->getManager();
             $cart = $session->get('cart');
-            foreach ($cart as $cartitem) {
-                $description = $description . $cartitem['pizza']['name'] . ", " . $cartitem['pizza']['size'] . ", " . $cartitem['pizza']['topping'] . " & ";
-                $price = $price + $cartitem['pizza']['price'];
+            $lastItem = end($cart);
+            foreach ($cart as $cartItem) {
+                if ($cartItem == $lastItem) {
+                    $description = $description . $cartItem['pizza']['name'] . "." . $cartItem['pizza']['size'] . "." . $cartItem['pizza']['topping'];
+                } else {
+                    $description = $description . $cartItem['pizza']['name'] . "." . $cartItem['pizza']['size'] . "." . $cartItem['pizza']['topping'] . "!";
+                }
+                $price = $price + $cartItem['pizza']['price'];
             }
 
             $order->setDescription($description);

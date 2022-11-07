@@ -34,7 +34,9 @@
                                                    href="{{ path('app_categories') }}">Pizza's</a></li>
                     <li class="nav__list--link"><a class="nav__list--hyper" href="{{ path('app_contact') }}">Contact</a>
                     <li class="nav__list--link nav__icon"><a class="nav__list--hyper nav__icon cart" href="{{ path('app_checkout') }}">
+                            {% if app.session.get('cart')|length > 0 %}
                             <div class="cart__count">{{ app.session.get('cart')|length }}</div>
+                            {% endif %}
                             <i class="fas fa-shopping-cart "></i>
                         </a>
                     </li>

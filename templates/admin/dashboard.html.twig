@@ -54,8 +54,33 @@
                                                 Methode: </strong>{{ order.orders.paymethod }}</li>
                                     </ul>
                                 </div>
-                                <div class="dashboard__table--cell"
-                                     data-label="Order">{{ order.orders.description }}</div>
+                                <div class="dashboard__table--cell user__dropdown"
+                                     data-label="Order">
+                                    {% if order.descriptions|length > 1 %}
+                                        {{ order.descriptions|length }} Pizza's
+                                    {% else %}
+                                        {{ order.descriptions|length }} Pizza
+                                    {% endif %}
+                                    <i class="fas fa-caret-down"></i>
+                                    <ul class="user__list">
+                                        {% for descriptions in order.descriptions %}
+                                            Pizza {{ loop.index }}:
+                                            <li class="user__list--link"><strong></strong>Naam:
+                                                {{ descriptions[0] }}
+                                            </li>
+                                            <li class="user__list--link"><strong></strong>Size:
+                                                {% for size in descriptions|slice(1, 1) %}
+                                                    {{ size }}
+                                                {% endfor %}
+                                            </li>
+                                            <li class="user__list--link"><strong></strong>Topping:
+                                                {% for topping in descriptions|slice(2, 2) %}
+                                                    {{ topping }}
+                                                {% endfor %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
                                 <div class="dashboard__table--cell" data-label="Price">€{{ order.orders.price }},-</div>
                                 <a href="/admin/statuschange/{{ order.orders.id }}"
                                    class="dashboard__table--cell dashboard__status status status__{{ order.orders.status|replace({' ': ''})|lower }}"
