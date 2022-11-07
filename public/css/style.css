@@ -98,6 +98,30 @@ a {
 
 */
 
+.nav__icon {
+    font-size: 24px;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart__count {
+    position: absolute;
+    background: #b61623;
+    color: #fff;
+    height: 15px;
+    width: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    top: 0;
+    right: 0;
+    padding: 4px;
+}
+
 .user__list {
     display: none;
     position: absolute;
@@ -162,7 +186,7 @@ nav {
 }
 
 .nav__list--link {
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -279,20 +303,20 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #242424;
+    color: #fff;
     padding: 4px;
 }
 
 .status__todo {
-    background-color: #ff6668;
+    background-color: rgb(168, 64, 66);
 }
 
 .status__inprogress {
-    background-color: #ffa540;
+    background-color: #e18725;
 }
 
 .status__done {
-    background-color: #7dff74;
+    background-color: rgb(57, 115, 53);
 }
 
 .dashboard__table--list {

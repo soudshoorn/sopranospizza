@@ -33,13 +33,16 @@
                     <li class="nav__list--link"><a class="nav__list--hyper"
                                                    href="{{ path('app_categories') }}">Pizza's</a></li>
                     <li class="nav__list--link"><a class="nav__list--hyper" href="{{ path('app_contact') }}">Contact</a>
-                    <li class="nav__list--link"><a class="nav__list--hyper" href="{{ path('app_checkout') }}"><i class="fas fa-shopping-cart"></i></a>
+                    <li class="nav__list--link nav__icon"><a class="nav__list--hyper nav__icon cart" href="{{ path('app_checkout') }}">
+                            <div class="cart__count">{{ app.session.get('cart')|length }}</div>
+                            <i class="fas fa-shopping-cart "></i>
+                        </a>
                     </li>
-                    <li class="nav__list--link user__dropdown">
+                    <li class="nav__list--link user__dropdown nav__icon">
                         {% if is_granted('ROLE_ADMIN') %}
-                        <a class="nav__list--hyper" href="{{ path('admin_dashboard') }}">
+                        <a class="nav__list--hyper nav__icon" href="{{ path('admin_dashboard') }}">
                             {% elseif is_granted('ROLE_USER') %}
-                            <a class="nav__list--hyper" href="{{ path('app_dashboard') }}">
+                            <a class="nav__list--hyper nav__icon" href="{{ path('app_dashboard') }}">
                                 {% else %}
                                 <a class="nav__list--hyper" href="{{ path('app_login') }}">
                                     {% endif %}

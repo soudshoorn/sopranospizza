@@ -87,13 +87,14 @@ class RoutesController extends AbstractController
         $session = $this->requestStack->getSession();
         $order = new Orders();
         $user = $this->getUser();
-        if($user) {
+        if ($user) {
             $userid = $user->getId();
             $useremail = $user->getEmail();
         } else {
-            $userid = null;
+            $userid = false;
             $useremail = '';
         }
+
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
 
@@ -103,7 +104,7 @@ class RoutesController extends AbstractController
             $price = 0;
             $entityManager = $doctrine->getManager();
             $cart = $session->get('cart');
-            foreach($cart as $cartitem) {
+            foreach ($cart as $cartitem) {
                 $description = $description . $cartitem['pizza']['name'] . ", " . $cartitem['pizza']['size'] . ", " . $cartitem['pizza']['topping'] . " & ";
                 $price = $price + $cartitem['pizza']['price'];
             }
@@ -111,9 +112,7 @@ class RoutesController extends AbstractController
             $order->setDescription($description);
             $order->setPrice($price);
             $order->setStatus("To Do");
-            if($user) {
-                $order->setUserId($userid);
-            }
+            $order->setUserId($userid);
             $entityManager->persist($order);
             $entityManager->flush();
 

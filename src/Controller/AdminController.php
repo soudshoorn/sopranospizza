@@ -23,9 +23,9 @@ class AdminController extends AbstractController
     {
         $orders = $ordersRepository->findAll();
         $ordersArray = [];
-        foreach($orders AS $order) {
+        foreach ($orders as $order) {
             $user = $userRepository->findOneBy(['id' => $order->getUserId()]);
-            if($user !== null) {
+            if ($user !== null) {
                 $useremail = $user->getEmail();
             } else {
                 $useremail = "Gast";
@@ -44,14 +44,12 @@ class AdminController extends AbstractController
     {
         $order = $ordersRepository->findOneBy(['id' => $id]);
         $entityManager = $doctrine->getManager();
-
-        if($order->getStatus() == 'To Do') {
+        if ($order->getStatus() == 'To Do') {
             $order->setStatus("In Progress");
-        } else if($order->getStatus() == 'In Progress') {
+        } else if ($order->getStatus() == 'In Progress') {
             $order->setStatus("Done");
         } else {
             $order->setStatus("To Do");
-
         }
 
         $entityManager->persist($order);
@@ -70,7 +68,7 @@ class AdminController extends AbstractController
         $pizzas = $pizzaRepository->findAll();
         $pizzasArray = [];
 
-        foreach($pizzas AS $pizza) {
+        foreach ($pizzas as $pizza) {
             $category = $categoriesRepository->findOneBy(['id' => $pizza->getCategoryId()]);
             $categoryname = $category->getName();
             $pizzasArray[] = ['pizzas' => $pizza, 'category' => $categoryname];
@@ -91,7 +89,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $doctrine->getManager();
             $pizzaimage = $form->get('img')->getData();
-            if($pizzaimage !== null) {
+            if ($pizzaimage !== null) {
                 $fileFolder = __DIR__ . '/../../public/img/';
                 $filePathName = md5(uniqid()) . $pizzaimage->getClientOriginalName();
                 try {
@@ -131,7 +129,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $doctrine->getManager();
             $pizzaimage = $form->get('img')->getData();
-            if($pizzaimage !== null) {
+            if ($pizzaimage !== null) {
                 $fileFolder = __DIR__ . '/../../public/img/';
                 $filePathName = md5(uniqid()) . $pizzaimage->getClientOriginalName();
                 try {

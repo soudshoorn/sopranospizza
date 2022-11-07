@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 07 nov 2022 om 09:19
+-- Gegenereerd op: 07 nov 2022 om 10:29
 -- Serverversie: 10.4.24-MariaDB
 -- PHP-versie: 8.1.6
 
@@ -94,7 +94,7 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `adress` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -108,8 +108,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `description`, `price`, `user_id`, `status`, `name`, `adress`, `postal`, `email`, `paymethod`) VALUES
-(5, 'Ansjovis, 25cm (Medium), Knoflook Saus & Pepperoni, 35cm (Large), Knoflook Saus & ', 22, 1, 'To Do', 'Senna Oudshoorn', 'Tinwerf 16', '1999AB', 'admin@gmail.com', 'Contant'),
-(6, 'Ansjovis, 25cm (Medium), Knoflook Saus & Pepperoni, 25cm (Medium), Knoflook Saus & ', 22, 1, 'To Do', 'Senna Oudshoorn', 'Tinwerf 16', '1999AB', 'admin@gmail.com', 'IDEAL');
+(5, 'Ansjovis, 25cm (Medium), Knoflook Saus & Pepperoni, 35cm (Large), Knoflook Saus & ', 22, NULL, 'In Progress', 'Senna Oudshoorn', 'Tinwerf 16', '1999AB', 'admin@gmail.com', 'Contant'),
+(6, 'Ansjovis, 25cm (Medium), Knoflook Saus & Pepperoni, 25cm (Medium), Knoflook Saus & ', 22, 1, 'Done', 'Senna Oudshoorn', 'Tinwerf 16', '1999AB', 'admin@gmail.com', 'IDEAL'),
+(7, 'Ansjovis, 25cm (Medium), Knoflook Saus & ', 9, 0, 'In Progress', 'addad', 'dada', 'adadad', 'adada', 'Contant'),
+(8, 'Ansjovis, 25cm (Medium), Knoflook Saus & Pepperoni, 25cm (Medium), Knoflook Saus & Ansjovis, Calzone, Chilli Flakes & ', 32, 1, 'To Do', 'Gianni', 'Gianniweg 23', '9871BD', 'admin@gmail.com', 'Contant');
 
 -- --------------------------------------------------------
 
@@ -219,7 +221,7 @@ ALTER TABLE `messenger_messages`
 -- AUTO_INCREMENT voor een tabel `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT voor een tabel `pizza`
