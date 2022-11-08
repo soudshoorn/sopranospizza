@@ -98,6 +98,38 @@ a {
 
 */
 
+.btn__menu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+.menu__links {
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu__link {
+    display: flex;
+    color: #fff;
+    background-color: rgba(57, 81, 68, 1);
+    border: #395144 solid 2px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.menu__backdrop {
+    display: none;
+}
+
+.menu--open .menu__backdrop {
+    display: block;
+}
+
 .nav__icon {
     font-size: 24px;
 }
@@ -128,7 +160,7 @@ a {
     min-width: 160px;
     background-color: #fff;
     border-radius: 0 8px 8px 8px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -275,7 +307,7 @@ nav {
 }
 
 .steps__step--title {
-    color: #AA8B56;
+    color: #395144;
     font-size: 24px;
     letter-spacing: 2px;
 }
@@ -352,7 +384,7 @@ nav {
 
 .dashboard__table--row {
     background-color: #ffffff;
-    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard__orders--wrapper {
@@ -437,7 +469,7 @@ nav {
     height: 250px;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
 }
 
 /*
@@ -561,7 +593,7 @@ div:has(> .form__select) {
     background-color: #395144 !important;
     width: 100%;
     border: none;
-    border-radius: 0 0 8px 8px ;
+    border-radius: 0 0 8px 8px;
     color: #F0EBCE;
     font-size: 22px;
     cursor: pointer;
@@ -578,6 +610,7 @@ div:has(> .form__select) {
     max-width: 50%;
     max-height: 500px;
 }
+
 
 .checkout__banner--img {
     width: 100%;
@@ -666,35 +699,70 @@ div:has(> .form__select) {
 
 */
 
-.btn__menu {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: none;
-}
+@media (max-width: 680px) {
+    .pizza__banner--title {
+        font-size: 24px;
+    }
 
-.menu__link {
-    display: flex;
-    color: #395144;
-    background-color: rgba(115, 224, 162, 0.53);
-    width: 100%;
-    border-radius: 12px;
-    padding: 12px;
-}
+    .pizza__banner--img {
+        height: 300px;
+    }
 
-.menu__backdrop {
-    display: none;
-}
+    .pizza__content {
+        display: flex;
+        flex-direction: column;
+    }
 
-.menu--open .menu__backdrop{
-    display: block;
-}
+    .checkout__half {
+        flex: 100%;
+    }
 
-@media (max-width: 680px){
+    .checkout__banner {
+        display: none;
+    }
+
+    .category {
+        max-width: 100% !important;
+    }
+
+    .categories__category {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .steps__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .steps__step {
+        width: 100%;
+    }
+
+    .landing__banner {
+        display: none;
+    }
+
     .btn__menu {
         display: block;
     }
+
     .nav__static {
         display: none;
+    }
+}
+
+@media (max-width: 370px) {
+    .pizza__banner--title {
+        width: 100%;
+        font-size: 20px;
+        top: 30%;
+    }
+
+    .pizza__banner--btn {
+        width: 80%;
     }
 }

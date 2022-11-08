@@ -27,9 +27,9 @@ class AdminController extends AbstractController
             unset($descriptionText);
             $user = $userRepository->findOneBy(['id' => $order->getUserId()]);
             if ($user !== null) {
-                $useremail = $user->getEmail();
+                $userEmail = $user->getEmail();
             } else {
-                $useremail = "Gast";
+                $userEmail = "Gast";
             }
 
             $descriptionsArray = explode("!", $order->getDescription());
@@ -37,7 +37,7 @@ class AdminController extends AbstractController
                 $descriptionText[] = explode(".", $description);
             }
 
-            $ordersArray[] = ['orders' => $order, 'email' => $useremail, 'descriptions' => $descriptionText];
+            $ordersArray[] = ['orders' => $order, 'email' => $userEmail, 'descriptions' => $descriptionText];
         }
 
         return $this->render('admin/dashboard.html.twig', [
@@ -77,8 +77,8 @@ class AdminController extends AbstractController
 
         foreach ($pizzas as $pizza) {
             $category = $categoriesRepository->findOneBy(['id' => $pizza->getCategoryId()]);
-            $categoryname = $category->getName();
-            $pizzasArray[] = ['pizzas' => $pizza, 'category' => $categoryname];
+            $categoryName = $category->getName();
+            $pizzasArray[] = ['pizzas' => $pizza, 'category' => $categoryName];
         }
         return $this->render('admin/menu.html.twig', [
             'pizzas' => $pizzasArray,
@@ -95,12 +95,12 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $doctrine->getManager();
-            $pizzaimage = $form->get('img')->getData();
-            if ($pizzaimage !== null) {
+            $pizzaImage = $form->get('img')->getData();
+            if ($pizzaImage !== null) {
                 $fileFolder = __DIR__ . '/../../public/img/';
-                $filePathName = md5(uniqid()) . $pizzaimage->getClientOriginalName();
+                $filePathName = md5(uniqid()) . $pizzaImage->getClientOriginalName();
                 try {
-                    $pizzaimage->move($fileFolder, $filePathName);
+                    $pizzaImage->move($fileFolder, $filePathName);
                 } catch (FileException $e) {
                     $this->addFlash(
                         'danger',
@@ -135,12 +135,12 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $doctrine->getManager();
-            $pizzaimage = $form->get('img')->getData();
-            if ($pizzaimage !== null) {
+            $pizzaImage = $form->get('img')->getData();
+            if ($pizzaImage !== null) {
                 $fileFolder = __DIR__ . '/../../public/img/';
-                $filePathName = md5(uniqid()) . $pizzaimage->getClientOriginalName();
+                $filePathName = md5(uniqid()) . $pizzaImage->getClientOriginalName();
                 try {
-                    $pizzaimage->move($fileFolder, $filePathName);
+                    $pizzaImage->move($fileFolder, $filePathName);
                 } catch (FileException $e) {
                     $this->addFlash(
                         'danger',

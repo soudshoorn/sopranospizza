@@ -89,16 +89,15 @@ class RoutesController extends AbstractController
         $order = new Orders();
         $user = $this->getUser();
         if ($user) {
-            $userid = $user->getId();
-            $useremail = $user->getEmail();
+            $userId = $user->getId();
+            $userEmail = $user->getEmail();
         } else {
-            $userid = null;
-            $useremail = '';
+            $userId = null;
+            $userEmail = '';
         }
 
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
-
         $orderArray[] = $session->get('cart');
         if ($form->isSubmitted() && $form->isValid()) {
             $description = "";
@@ -118,7 +117,7 @@ class RoutesController extends AbstractController
             $order->setDescription($description);
             $order->setPrice($price);
             $order->setStatus("To Do");
-            $order->setUserId($userid);
+            $order->setUserId($userId);
             $entityManager->persist($order);
             $entityManager->flush();
 
@@ -131,7 +130,7 @@ class RoutesController extends AbstractController
         }
 
         return $this->render('pages/checkout.html.twig', [
-            'email' => $useremail,
+            'email' => $userEmail,
             'order' => $orderArray,
             'form' => $form->createView(),
             'controller_name' => 'RoutesController',
@@ -145,7 +144,6 @@ class RoutesController extends AbstractController
         $cart = $session->get('cart');
         unset($cart[$id]);
         $session->set('cart', $cart);
-
 
         return $this->redirectToRoute('app_checkout');
     }

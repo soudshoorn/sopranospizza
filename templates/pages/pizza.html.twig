@@ -21,9 +21,11 @@
                         </div>
                     </div>
                     <div class="pizza__banner--container page__banner">
-                        <img class="categories__banner--img page__banner--img pizza__bottom--banner" src="{{ asset('img/categories-banner.jpg') }}" />
+                        <img class="categories__banner--img page__banner--img pizza__bottom--banner"
+                             src="{{ asset('img/categories-banner.jpg') }}"/>
                         <h3 class="pizza__banner--title pizza__banner--item">Andere pizza's bekijken?</h3>
-                        <a class="btn pizza__banner--btn pizza__banner--item" src="{{ path('app_categories') }}">Bekijk andere pizza's</a>
+                        <a class="btn pizza__banner--btn pizza__banner--item" src="{{ path('app_categories') }}">Bekijk
+                            andere pizza's</a>
                     </div>
                 </div>
             </div>
@@ -32,7 +34,7 @@
     <script>
         const pizzaImg = document.querySelector('.pizza__banner--img');
 
-        pizzaImg.addEventListener('load', function() {
+        pizzaImg.addEventListener('load', function () {
             console.log('image loaded!')
         })
     </script>
