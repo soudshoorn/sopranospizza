@@ -28,9 +28,10 @@ class RoutesController extends AbstractController
     }
 
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(CategoriesRepository $categoriesRepository): Response
     {
         return $this->render('pages/homepage.html.twig', [
+            'categories' => $categoriesRepository->findAll(),
             'controller_name' => 'RoutesController',
         ]);
     }
@@ -91,7 +92,7 @@ class RoutesController extends AbstractController
             $userid = $user->getId();
             $useremail = $user->getEmail();
         } else {
-            $userid = false;
+            $userid = null;
             $useremail = '';
         }
 

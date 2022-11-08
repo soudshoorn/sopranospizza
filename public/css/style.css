@@ -287,6 +287,11 @@ nav {
     text-align: center;
 }
 
+.steps {
+    padding: 48px 0;
+    background-color: #fafafa;
+}
+
 /*
 
     DASHBOARD
@@ -653,4 +658,43 @@ div:has(> .form__select) {
     height: 300px;
     object-fit: cover;
     border-radius: 12px;
+}
+
+/*
+
+    MEDIA QUERIES
+
+*/
+
+.btn__menu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+.menu__link {
+    display: flex;
+    color: #395144;
+    background-color: rgba(115, 224, 162, 0.53);
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.menu__backdrop {
+    display: none;
+}
+
+.menu--open .menu__backdrop{
+    display: block;
+}
+
+@media (max-width: 680px){
+    .btn__menu {
+        display: block;
+    }
+    .nav__static {
+        display: none;
+    }
 }

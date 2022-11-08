@@ -48,4 +48,22 @@
         </div>
     </div>
 </section>
+
+<section class="menu">
+    <div class="container">
+        <div class="row">
+            <div class="categories__category">
+                {% for category in categories %}
+                    <a class="category" href="/category/{{ category.id }}">
+                        <img class="category__img" src="{{ asset('img/'~category.img~'') }}"
+                             alt="{{ category.img }}"/>
+                        <div class="category__description">
+                            <div class="category__description--title">{{ category.name }} Pizza's</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

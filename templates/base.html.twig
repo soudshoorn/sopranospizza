@@ -29,13 +29,15 @@
                     </a>
                 </div>
                 <ul class="nav__list">
-                    <li class="nav__list--link"><a class="nav__list--hyper" href="{{ path('index') }}">Home</a></li>
-                    <li class="nav__list--link"><a class="nav__list--hyper"
+                    <li class="nav__list--link nav__static"><a class="nav__list--hyper" href="{{ path('index') }}">Home</a></li>
+                    <li class="nav__list--link nav__static"><a class="nav__list--hyper"
                                                    href="{{ path('app_categories') }}">Pizza's</a></li>
-                    <li class="nav__list--link"><a class="nav__list--hyper" href="{{ path('app_contact') }}">Contact</a>
-                    <li class="nav__list--link nav__icon"><a class="nav__list--hyper nav__icon cart" href="{{ path('app_checkout') }}">
+                    <li class="nav__list--link nav__static"><a class="nav__list--hyper" href="{{ path('app_contact') }}">Contact</a>
+                    </li>
+                    <li class="nav__list--link nav__icon"><a class="nav__list--hyper nav__icon cart"
+                                                             href="{{ path('app_checkout') }}">
                             {% if app.session.get('cart')|length > 0 %}
-                            <div class="cart__count">{{ app.session.get('cart')|length }}</div>
+                                <div class="cart__count">{{ app.session.get('cart')|length }}</div>
                             {% endif %}
                             <i class="fas fa-shopping-cart "></i>
                         </a>
@@ -72,6 +74,16 @@
                                     {% endif %}
                                 </ul>
                     </li>
+                    <button class="btn__menu nav__icon" onclick="openMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </ul>
+            </div>
+            <div class="menu__backdrop">
+                <ul class="menu__links">
+                    <li class="menu__list"><a class="menu__link" href="#">Home</a></li>
+                    <li class="menu__list"><a class="menu__link" href="#">Contact</a></li>
+                    <li class="menu__list"><a href="./books.html" class="menu__link">Books</a></li>
                 </ul>
             </div>
         </div>
@@ -88,12 +100,10 @@
     {% endfor %}
 {% endfor %}
 {% block body %}{% endblock %}
-<footer>
-    <div class="container">
-        <div class="row">
-
-        </div>
-    </div>
-</footer>
+<script type="text/javascript">
+    function openMenu() {
+        document.body.classList.toggle("menu--open");
+    }
+</script>
 </body>
 </html>
