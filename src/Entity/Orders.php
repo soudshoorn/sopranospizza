@@ -40,6 +40,9 @@ class Orders
     #[ORM\Column(length: 255)]
     private ?string $paymethod = null;
 
+    #[ORM\Column]
+    private ?int $number = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,6 +152,18 @@ class Orders
     public function setPaymethod(string $paymethod): self
     {
         $this->paymethod = $paymethod;
+
+        return $this;
+    }
+
+    public function getNumber(): ?int
+    {
+        return $this->number;
+    }
+
+    public function setNumber(int $number): self
+    {
+        $this->number = $number;
 
         return $this;
     }
