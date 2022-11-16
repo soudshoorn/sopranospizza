@@ -35,13 +35,6 @@ class OrderType extends AbstractType
                     'maxlength' => 6
                 ],
             ])
-            ->add('number', NumberType::class , [
-                'attr' => [
-                    'placeholder' => "12",
-                    'class' => 'form__size form__select',
-                    'maxlength' => 4,
-                ],
-            ])
             ->add('adress', TextType::class , [
                 'attr' => [
                     'placeholder' => "Jan Hendrikstraat",

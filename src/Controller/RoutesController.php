@@ -114,16 +114,6 @@ class RoutesController extends AbstractController
                 $price = $price + $cartItem['pizza']['price'];
             }
 
-            $formData = $form->getData();
-            $url = 'https://geodata.nationaalgeoregister.nl/locatieserver/free?fq=postcode:2631LB&fq=huisnummer~142*';
-            $curl = curl_init($url);
-            curl_setopt($curl, CURLOPT_URL, $url);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-            $result = curl_exec($curl);
-            curl_close($curl);
-            dd($this->json($result));
-
             $order->setDescription($description);
             $order->setPrice($price);
             $order->setStatus("To Do");

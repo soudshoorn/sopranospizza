@@ -428,6 +428,33 @@ nav {
 
 /*
 
+    CONTACT
+
+*/
+
+.contact__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact__title {
+    color: #395144;
+    padding: 12px 0;
+    font-size: 28px;
+}
+
+.contact__description {
+    font-size: 20px;
+    color: #395144;
+}
+
+.contact__description>li {
+    margin-bottom: 12px;
+}
+
+
+/*
+
     CATEGORIES
 
 */
